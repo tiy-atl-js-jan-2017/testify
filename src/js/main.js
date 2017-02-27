@@ -1,8 +1,19 @@
+
+
 function GildedRose (sellIn, quality, name) {
   this.name = name;
   this.sellIn = sellIn;
   this.quality = quality;
 }
+
+GildedRose.prototype.conjuredCake = function() {
+  if (this.quality > 0) {
+    this.quality -= 2;
+  }
+  // if (this.sellIn < 0)  {
+  //   this.quality -= 2;
+  // }
+};
 
 GildedRose.prototype.tick = function () {
   if (this.name != 'Aged Brie' && this.name != 'Backstage passes to a TAFKAL80ETC concert') {
@@ -11,7 +22,7 @@ GildedRose.prototype.tick = function () {
         if (this.name != 'Conjured Mana Cake'){
           this.quality = this.quality - 1;
         } else{
-          this.quality -= 2;
+          this.conjuredCake();
         }
       }
     }
@@ -43,7 +54,7 @@ GildedRose.prototype.tick = function () {
             if (this.name != 'Conjured Mana Cake') {
               this.quality = this.quality - 1;
             } else {
-              this.quality -= 2;
+              this.conjuredCake();
             }
           }
         }
