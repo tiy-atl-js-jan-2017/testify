@@ -15,12 +15,21 @@ GildedRose.prototype.conjuredCake = function() {
   // }
 };
 
+GildedRose.prototype.normal = function()  {
+  if (this.quality > 0) {
+    this.quality -= 1;
+  }
+  // if (this.sellIn < 0)  {
+  //   this.quality -= 1
+  // }
+};
+
 GildedRose.prototype.tick = function () {
   if (this.name != 'Aged Brie' && this.name != 'Backstage passes to a TAFKAL80ETC concert') {
     if (this.quality > 0) {
       if (this.name != 'Sulfuras, Hand of Ragnaros') {
         if (this.name != 'Conjured Mana Cake'){
-          this.quality = this.quality - 1;
+          this.normal();
         } else{
           this.conjuredCake();
         }
@@ -52,7 +61,7 @@ GildedRose.prototype.tick = function () {
         if (this.quality > 0) {
           if (this.name != 'Sulfuras, Hand of Ragnaros') {
             if (this.name != 'Conjured Mana Cake') {
-              this.quality = this.quality - 1;
+              this.normal();
             } else {
               this.conjuredCake();
             }
