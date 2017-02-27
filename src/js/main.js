@@ -7,7 +7,6 @@ function GildedRose (sellIn, quality, name) {
 }
 
 GildedRose.prototype.conjuredCake = function() {
-  this.sellIn -= 1;
   if (this.quality > 0) {
     this.quality -= 2;
   }
@@ -17,7 +16,6 @@ GildedRose.prototype.conjuredCake = function() {
 };
 
 GildedRose.prototype.normal = function()  {
-  this.sellIn -= 1;
   if (this.quality > 0) {
     this.quality -= 1;
   }
@@ -27,7 +25,6 @@ GildedRose.prototype.normal = function()  {
 };
 
 GildedRose.prototype.backstagePass = function () {
-  this.sellIn -= 1;
   if (this.quality < 50) {
     this.quality += 1;
   }
@@ -43,7 +40,6 @@ GildedRose.prototype.backstagePass = function () {
 };
 
 GildedRose.prototype.agedBrie = function()  {
-  this.sellIn -= 1;
   if (this.quality < 50) {
     this.quality += 1;
   }
@@ -53,7 +49,9 @@ GildedRose.prototype.agedBrie = function()  {
 };
 
 GildedRose.prototype.tick = function () {
-
+  if (this.name != 'Sulfuras, Hand of Ragnaros')  {
+    this.sellIn -= 1;
+  }
   if (this.name === 'Conjured Mana Cake') {
     this.conjuredCake();
   }
