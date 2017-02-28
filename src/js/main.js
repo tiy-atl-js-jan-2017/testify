@@ -5,66 +5,57 @@ function GildedRose (sellIn, quality, name) {
 }
 
 GildedRose.prototype.tick = function () {
-  if (this.name != 'Aged Brie' && this.name != 'Backstage passes to a TAFKAL80ETC concert' && this.name != 'Sulfuras, Hand of Ragnaros') {
-    if (this.quality > 0) {
-        this.quality = this.quality - 1;
-      }
-    }
 
-    else {
-    if (this.quality < 50) {
-      this.quality = this.quality + 1;
-      if (this.name == 'Backstage passes to a TAFKAL80ETC concert') {
-        if (this.sellIn < 11) {
-          if (this.quality < 50) {
-            this.quality = this.quality + 1;
-          }
-        }
-        if (this.sellIn < 6) {
-          if (this.quality < 50) {
-            this.quality = this.quality + 1;
-          }
-        }
+  if (this.name === 'normal') {
+      // do stuff
+      if (this.sellIn < 0 && this.quality < 50){
+          this.quality -= 2;
+          this.sellIn -= 1;
+          return;
       }
-    }
   }
 
-
-  if (this.name != 'Sulfuras, Hand of Ragnaros') {
-    this.sellIn = this.sellIn - 1;
+  if (this.name === 'Aged Brie') {
+      if (this.sellIn <= 0 && this.quality <= 48) {
+          this.quality += 2;
+          this.sellIn -= 1;
+      } else if (this.sellIn >= 0 && this.quality <= 49) {
+          this.quality += 1;
+          this.sellIn -= 1;
+      } else if (this.quality == 50) {
+        this.sellIn -= 1;
+      }
+      return;
   }
 
-
-  if (this.sellIn < 0) {
-    if (this.name != 'Aged Brie') {
-      if (this.name != 'Backstage passes to a TAFKAL80ETC concert') {
-        if (this.quality > 0) {
-          if (this.name != 'Sulfuras, Hand of Ragnaros') {
-            this.quality = this.quality - 1;
-          }
-        }
+  if (this.name === 'Backstage passes to a TAFKAL80ETC concert') {
+      if (this.quality === 50) {
+          this.sellIn -= 1;
+      } else if (this.sellIn > 10 && this.quality <= 49) {
+          this.quality += 1;
+          this.sellIn -= 1;
+      } else if (this.sellIn <= 10 && this.sellIn > 5 && this.quality <= 48) {
+          this.quality += 2;
+          this.sellIn -= 1;
+      } else if (this.sellIn <= 5 && this.sellIn > 0 && this.quality <= 47) {
+          this.quality += 3;
+          this.sellIn -= 1;
+      }  else if (this.sellIn <= 0) {
+         this.quality = 0;
+         this.sellIn -= 1;
       }
-
-      else {
-        this.quality = this.quality - this.quality;
-      }
-    }
-
-    else {
-      if (this.quality < 50) {
-        this.quality = this.quality + 1;
-      }
-    }
+      return
   }
+
      if (this.name == 'Conjured Mana Cake') {
        if (this.quality > 0 && this.sellIn > 0) {
-         this.quality = this.quality - 1;
+         this.quality -= 1;
        }
        if (this.quality > 0 && this.sellIn < 0) {
-         this.quality = this.quality - 2;
-    }
+         this.quality -= 2;
+     }
    }
- 
+
 }
 
 export { GildedRose };
