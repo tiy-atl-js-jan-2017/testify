@@ -1,21 +1,14 @@
+var ITEM_TYPES = {
+  'Conjured Mana Cake': ConjuredCake,
+  'Sulfuras, Hand of Ragnaros': Sulfuras,
+  'normal': Normal,
+  'Backstage passes to a TAFKAL80ETC concert': Backstage,
+  'Aged Brie': AgedBrie
+};
 
 
 function GildedRose (sellIn, quality, name) {
-  if (name === 'Conjured Mana Cake') {
-    return new ConjuredCake(sellIn, quality);
-  }
-  if (name === 'Sulfuras, Hand of Ragnaros')  {
-    return new Sulfuras(sellIn, quality);
-  }
-  if (name === 'normal') {
-    return new Normal(sellIn, quality);
-  }
-  if (name === 'Backstage passes to a TAFKAL80ETC concert')  {
-    return new Backstage(sellIn, quality);
-  }
-  if (name === 'Aged Brie')  {
-    return new AgedBrie(sellIn, quality);
-  }
+  return new ITEM_TYPES[name](sellIn, quality);
 }
 
 function ConjuredCake (sellIn, quality)  {
@@ -92,7 +85,6 @@ function Sulfuras(sellIn, quality)  {
 }
 
 Sulfuras.prototype.tick = function()  {
-  return;
 };
 
 export { GildedRose };
