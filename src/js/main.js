@@ -1,69 +1,20 @@
+import { ConjuredCake } from './conjuredCake';
+import { Sulfuras } from './sulfuras';
+import { Normal } from './normal';
+import { Backstage } from './backstage';
+import { AgedBrie } from './agedBrie';
 
+var ITEM_TYPES = {
+  'Conjured Mana Cake': ConjuredCake,
+  'Sulfuras, Hand of Ragnaros': Sulfuras,
+  'normal': Normal,
+  'Backstage passes to a TAFKAL80ETC concert': Backstage,
+  'Aged Brie': AgedBrie
+};
 
 function GildedRose (sellIn, quality, name) {
-  this.name = name;
-  this.sellIn = sellIn;
-  this.quality = quality;
+  var itemConstructor = ITEM_TYPES[name];
+  return new itemConstructor(sellIn, quality);
 }
-
-GildedRose.prototype.conjuredCake = function() {
-  if (this.quality > 0) {
-    this.quality -= 2;
-  }
-  if (this.sellIn < 0 && this.quality > 0)  {
-    this.quality -= 2;
-  }
-};
-
-GildedRose.prototype.normal = function()  {
-  if (this.quality > 0) {
-    this.quality -= 1;
-  }
-  if (this.sellIn < 0 && this.quality > 0)  {
-    this.quality -= 1;
-  }
-};
-
-GildedRose.prototype.backstagePass = function () {
-  if (this.quality < 50) {
-    this.quality += 1;
-  }
-  if (this.sellIn < 10 && this.quality < 50) {
-    this.quality += 1;
-  }
-  if (this.sellIn < 5 && this.quality < 50) {
-    this.quality += 1;
-  }
-  if (this.sellIn < 0)  {
-    this.quality = 0;
-  }
-};
-
-GildedRose.prototype.agedBrie = function()  {
-  if (this.quality < 50) {
-    this.quality += 1;
-  }
-  if (this.sellIn <= 0 && this.quality < 50)  {
-    this.quality += 1;
-  }
-};
-
-GildedRose.prototype.tick = function () {
-  if (this.name != 'Sulfuras, Hand of Ragnaros')  {
-    this.sellIn -= 1;
-  }
-  if (this.name === 'Conjured Mana Cake') {
-    this.conjuredCake();
-  }
-  if (this.name === 'normal') {
-    this.normal();
-  }
-  if (this.name === 'Backstage passes to a TAFKAL80ETC concert')  {
-    this.backstagePass();
-  }
-  if (this.name === 'Aged Brie')  {
-    this.agedBrie();
-  }
-};
 
 export { GildedRose };
