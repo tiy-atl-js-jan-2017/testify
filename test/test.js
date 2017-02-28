@@ -6,7 +6,7 @@ const expect = chai.expect;
 const should = chai.should();
 const assert = chai.assert;
 
-import { GildedRose } from "../src/js/main";
+import { GildedRose } from "../src/js/seperateConstructors";
 
 describe('An inventory system ...', function () {
   it("test_normal_item_before_sell_date", function () {
