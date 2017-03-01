@@ -4,13 +4,6 @@ function GildedRose (sellIn, quality, name) {
   this.quality = quality;
 }
 
-// function normalTick (item) {
-//   item.sellIn -= 1;
-//   item.quality -= 1;
-//   if (item.sellIn <= 0) { item.quality -= 1; }
-//   if (item.quality <= 0) { item.quality = 0; }
-// }
-
 GildedRose.prototype.normalTick = function () {
   this.sellIn -= 1;
   this.quality -= 1;
@@ -18,10 +11,20 @@ GildedRose.prototype.normalTick = function () {
   if (this.quality <= 0) { this.quality = 0; }
 };
 
+GildedRose.prototype.agedBrieTick = function () {
+  this.sellIn -= 1;
+  if (this.sellIn <= 5) { this.quality += 1; }
+  if (this.sellIn <= 0) { this.quality += 1; }
+  if (this.quality > 50) { this.quality = 50; }
+};
+
 GildedRose.prototype.tick = function () {
   if (this.name === 'normal') {
-    // normalTick(this);
     this.normalTick();
+    return;
+  }
+  if (this.name === 'Aged Brie') {
+    this.agedBrieTick();
     return;
   }
   if (this.name != 'Aged Brie' && this.name != 'Backstage passes to a TAFKAL80ETC concert') {
