@@ -4,22 +4,17 @@ import { Backstage } from "./models/backstage";
 import { Sulfuras } from "./models/sulfuras";
 import { Conjured } from "./models/conjured";
 
+var ITEM_TYPES = {
+  'normal': NormalItem,
+  'Aged Brie': AgedBrie,
+  'Sulfuras, Hand of Ragnaros': Sulfuras,
+  'Backstage passes to a TAFKAL80ETC concert': Backstage,
+  'Conjured Mana Cake': Conjured
+ };
+
 function GildedRose (sellIn, quality, name) {
-  if (name === 'normal') {
-    return new NormalItem(sellIn, quality);
-  }
-  if (name === 'Aged Brie') {
-    return new AgedBrie(sellIn, quality);
-  }
-  if (name === 'Sulfuras, Hand of Ragnaros') {
-    return new Sulfuras(sellIn, quality);
-  }
-  if (name === 'Backstage passes to a TAFKAL80ETC concert') {
-    return new Backstage(sellIn, quality);
-  }
-  if (name === 'Conjured Mana Cake') {
-    return new Conjured(sellIn, quality);
-  }
+  var itemConstructor = ITEM_TYPES[name];
+  return new itemConstructor(sellIn, quality);
 }
 
 export { GildedRose };
