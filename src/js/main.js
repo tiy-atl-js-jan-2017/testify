@@ -4,6 +4,13 @@ function GildedRose (sellIn, quality, name) {
   this.quality = quality;
 }
 
+// function normalTick (item) {
+//   item.sellIn -= 1;
+//   item.quality -= 1;
+//   if (item.sellIn <= 0) { item.quality -= 1; }
+//   if (item.quality <= 0) { item.quality = 0; }
+// }
+
 GildedRose.prototype.normalTick = function () {
   this.sellIn -= 1;
   this.quality -= 1;
@@ -13,6 +20,7 @@ GildedRose.prototype.normalTick = function () {
 
 GildedRose.prototype.tick = function () {
   if (this.name === 'normal') {
+    // normalTick(this);
     this.normalTick();
     return;
   }
