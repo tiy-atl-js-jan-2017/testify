@@ -1,3 +1,10 @@
+Feb 27, 2017--Normal Mode--Kurt Wyckoff
+
+1)Looked at last 6 tests in exercise and corrected the logic for the new product "Conjured Mana Cake" so the test would pass
+2) added 2 if statements so that the logic would work
+
+Kurt
+
 Hi and welcome to team Gilded Rose.
 
 As you know, we are a small inn with a prime location in a prominent city ran
