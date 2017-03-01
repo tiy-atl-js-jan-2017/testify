@@ -1,9 +1,6 @@
-class NormalItem {
-  constructor (sellIn, quality) {
-    this.sellIn = sellIn;
-    this.quality = quality;
-  }
+import { Item } from "./item";
 
+class NormalItem extends Item {
   tick () {
     this.sellIn -= 1;
     this.quality -= 1;
@@ -11,5 +8,10 @@ class NormalItem {
     if (this.quality < 0) { this.quality = 0; }
   }
 }
+
+// Mammal.prototype = new Animal;
+// Mammal.prototype.run = function () {};
+// Dog.prototype = new Mammal;
+// Dog.prototype.bark = function () {};
 
 export { NormalItem };

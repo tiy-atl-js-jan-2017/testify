@@ -1,7 +1,7 @@
+import { Item } from "./models/item";
 import { AgedBrie } from "./models/brie";
 import { NormalItem } from "./models/normal";
 import { Backstage } from "./models/backstage";
-import { Item } from "./models/item";
 import { Conjured } from "./models/conjured";
 
 var ITEM_TYPES = {
@@ -12,9 +12,11 @@ var ITEM_TYPES = {
   'Conjured Mana Cake': Conjured
  };
 
-function GildedRose (sellIn, quality, name) {
-  var itemConstructor = ITEM_TYPES[name];
-  return new itemConstructor(sellIn, quality);
+class GildedRose {
+  constructor (sellIn, quality, name) {
+    var itemConstructor = ITEM_TYPES[name];
+    return new itemConstructor(sellIn, quality);
+  }
 }
 
 export { GildedRose };

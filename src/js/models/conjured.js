@@ -1,8 +1,6 @@
-class Conjured {
-  constructor (sellIn, quality) {
-    this.sellIn = sellIn;
-    this.quality = quality;
-  }
+import { Item } from "./item";
+
+class Conjured extends Item {
 
   tick () {
     this.sellIn -= 1;

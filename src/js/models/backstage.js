@@ -1,9 +1,6 @@
-class Backstage {
-  constructor (sellIn, quality) {
-    this.sellIn = sellIn;
-    this.quality = quality;
-  }
+import { Item } from "./item";
 
+class Backstage extends Item {
   tick () {
     this.sellIn -= 1;
     this.quality += 1;
