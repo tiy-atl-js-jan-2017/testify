@@ -11,7 +11,6 @@ GildedRose.prototype.tick = function () {
       if (this.sellIn < 0 && this.quality < 50){
           this.quality -= 2;
           this.sellIn -= 1;
-          return;
       }
   }
 
@@ -25,7 +24,6 @@ GildedRose.prototype.tick = function () {
       } else if (this.quality == 50) {
         this.sellIn -= 1;
       }
-      return;
   }
 
   if (this.name === 'Backstage passes to a TAFKAL80ETC concert') {
@@ -44,7 +42,6 @@ GildedRose.prototype.tick = function () {
          this.quality = 0;
          this.sellIn -= 1;
       }
-      return
   }
 
      if (this.name == 'Conjured Mana Cake') {
